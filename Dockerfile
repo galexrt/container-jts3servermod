@@ -1,4 +1,4 @@
-FROM dockerfile/java:oracle-java8
+FROM java:oracle-java8
 
 ENV JTS3_USER="jts3" JTS3_GROUP="jts3" JTS3_DIR="/jts3servermode" JTS3_JAVA_ARGS="-Xmx256M"
 ADD entrypoint.sh /entrypoint.sh
