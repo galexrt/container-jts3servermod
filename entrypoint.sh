@@ -9,4 +9,4 @@ if [ ! "$(ls -A $JTS3_DIR/config/)" ]; then
 fi
 
 echo "\nStarting JTS3ServerMod ..."
-java "$JTS3_JAVA_ARGS" -jar JTS3ServerMod.jar
+sudo -u "$JTS3_USER" java "$JTS3_JAVA_ARGS" -jar "$JTS3_DIR/JTS3ServerMod.jar"
