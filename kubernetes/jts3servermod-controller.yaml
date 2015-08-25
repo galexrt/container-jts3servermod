@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: jts3servermod-v1
+  namespace: default
+  labels:
+    version: v1
+    app: jts3servermod
+spec:
+  replicas: 1
+  selector:
+    version: v1
+    app: jts3servermod
+  template:
+    metadata:
+      labels:
+        app: jts3servermod
+        version: v1
+    spec:
+      containers:
+        - image: galexrt/jts3servermod:latest
+          name: jts3servermod
+          resources:
+            limits:
+              cpu: 30m
+              memory: 312Mi
+          ports:
+            - containerPort: 8087
+              hostPort: 8087
+              protocol: TCP
+          volumeMounts:
+          - name: jts3servermod-persistent-storage
+            mountPath: /jts3servermod/config
+            readOnly: false
+      volumes:
+      - name: jts3servermod-persistent-storage
+        hostPath:
+          path: /container-data/jts3servermod-data
