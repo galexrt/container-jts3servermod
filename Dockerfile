@@ -3,6 +3,8 @@ FROM java:8-jre
 ENV JTS3_USER="jts3" JTS3_GROUP="jts3" JTS3_DIR="/jts3servermode" JTS3_JAVA_ARGS="-Xmx256M"
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh && \
+    apt-get update && \
+    apt-get install bsdtar -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd -g 3000 -r "$JTS3_GROUP" && \
