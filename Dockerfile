@@ -15,7 +15,7 @@ RUN groupadd -g 3000 -r "$JTS3_GROUP" && \
     cp -rf "$JTS3_DIR/config" "$JTS3_DIR/default_config" && \
     apt-get -qq clean && \
     apt-get -qq autoremove --purge -y && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR "$JTS3_DIR"
 
