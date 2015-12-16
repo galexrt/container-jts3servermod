@@ -10,7 +10,7 @@ RUN groupadd -g 3000 -r "$JTS3_GROUP" && \
     apt-get -qq install bsdtar sudo -y && \
     mkdir -p "$JTS3_DIR" && \
     wget -q -O- "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" | \
-    bsdtar -xvf- -C "$JTS3_DIR" && \
+    bsdtar -xf- -C "$JTS3_DIR" && \
     rm -rf "$JTS3_DIR/tools" "$JTS3_DIR/readme*" "$JTS3_DIR/documents" "$JTS3_DIR/changelog.txt" && \
     cp -rf "$JTS3_DIR/config" "$JTS3_DIR/default_config" && \
     apt-get -qq clean && \
