@@ -1,5 +1,5 @@
 # docker-jts3servermod
-JTS3ServerMod by 
+JTS3ServerMod by Stefan1200 (see [here](https://www.stefan1200.de/forum/index.php?topic=2.0))
 
 ## Summary
 * Image based on java:8-jre with the latest version of JTS3ServerMod
