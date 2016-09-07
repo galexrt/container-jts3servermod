@@ -1,10 +1,10 @@
 FROM java:8-jre
 
-ENV JTS3_USER="jts3" JTS3_GROUP="jts3" JTS3_DIR="/jts3servermod" JTS3_JAVA_ARGS="-Xmx256M"
+ENV JTS3_USER="jts3" JTS3_UID="3000" JTS3_GROUP="jts3" JTS3_GID=3000 JTS3_DIR="/jts3servermod" JTS3_JAVA_ARGS="-Xmx256M"
 
 ADD entrypoint.sh /entrypoint.sh
-RUN groupadd -g 3000 -r "$JTS3_GROUP" && \
-    useradd -u 3000 -r -g "$JTS3_USER" -d "$JTS3_DIR" "$JTS3_USER" && \
+RUN groupadd -g $JTS3_GID -r "$JTS3_GROUP" && \
+    useradd -u $JTS3_UID -r -g "$JTS3_USER" -d "$JTS3_DIR" "$JTS3_USER" && \
     chmod 755 /entrypoint.sh && \
     apt-get -q update && \
     apt-get -q upgrade -y && \
@@ -13,7 +13,7 @@ RUN groupadd -g 3000 -r "$JTS3_GROUP" && \
     cd / && \
     unzip jts3servermod.zip && \
     mv -f "/JTS3ServerMod" "$JTS3_DIR" && \
-    chown -R "$JTS3_USER":"$JTS3_GROUP" "$JTS3_DIR" && \
+    chown -R "$JTS3_UID":"$JTS3_GID" "$JTS3_DIR" && \
     rm -rf /jts3servermod.zip "/JTS3ServerMod" "$JTS3_DIR/tools" "$JTS3_DIR/readme*" "$JTS3_DIR/documents" "$JTS3_DIR/changelog.txt" && \
     cp -rf "$JTS3_DIR/config" "$JTS3_DIR/default_config" && \
     apt-get -qq clean && \
