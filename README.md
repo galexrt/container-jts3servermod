@@ -2,6 +2,8 @@
 [![](https://images.microbadger.com/badges/image/galexrt/jts3servermod.svg)](https://microbadger.com/images/galexrt/jts3servermod "Get your own image badge on microbadger.com")
 
 [![Docker Repository on Quay.io](https://quay.io/repository/galexrt/jts3servermod/status "Docker Repository on Quay.io")](https://quay.io/repository/galexrt/zulip)
+
+Image available from:
 * [**Quay.io**](https://quay.io/repository/galexrt/jts3servermod)
 * [**Docker Hub**](https://hub.docker.com/r/galexrt/jts3servermod)
 
