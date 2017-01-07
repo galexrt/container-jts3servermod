@@ -8,8 +8,9 @@ RUN groupadd -g $JTS3_GID -r "$JTS3_GROUP" && \
     chmod 755 /entrypoint.sh && \
     apt-get -q update && \
     apt-get -q upgrade -y && \
-    apt-get -q install unzip sudo -y && \
-    wget -q -O /jts3servermod.zip "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
+    apt-get -q install unzip sudo -y
+
+RUN wget -q -O /jts3servermod.zip "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
     cd / && \
     unzip jts3servermod.zip && \
     mv -f "/JTS3ServerMod" "$JTS3_DIR" && \
