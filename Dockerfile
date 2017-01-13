@@ -4,7 +4,7 @@ ENV JTS3_USER="jts3" JTS3_UID="3000" JTS3_GROUP="jts3" JTS3_GID=3000 JTS3_DIR="/
 
 ADD entrypoint.sh /entrypoint.sh
 RUN groupadd -g $JTS3_GID -r "$JTS3_GROUP" && \
-    useradd -u $JTS3_UID -r -g "$JTS3_USER" -d "$JTS3_DIR" "$JTS3_USER" && \
+    useradd -u $JTS3_UID -r -g "$JTS3_GROUP" -d "$JTS3_DIR" "$JTS3_USER" && \
     chmod 755 /entrypoint.sh && \
     apt-get -q update && \
     apt-get -q upgrade -y && \
