@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: jts3servermod-v5.5.4
+  name: jts3servermod-v1
   namespace: default
   labels:
     version: v1
@@ -9,21 +9,21 @@ metadata:
 spec:
   replicas: 1
   selector:
-    version: v5.5.4
+    version: v1
     app: jts3servermod
   template:
     metadata:
       labels:
         app: jts3servermod
-        version: v5.5.4
+        version: v1
     spec:
       containers:
-        - image: galexrt/jts3servermod:v5.5.4
+        - image: galexrt/jts3servermod:v1
           name: jts3servermod
           resources:
             limits:
               cpu: 100m
-              memory: 512Mi
+              memory: 384Mi
           volumeMounts:
           - name: jts3servermod-storage
             mountPath: /opt/jts3servermod/config
@@ -31,4 +31,4 @@ spec:
       volumes:
       - name: jts3servermod-storage
         hostPath:
-          path: /container-data/jts3servermod-data
+          path: /opt/docker/jts3servermod/config
