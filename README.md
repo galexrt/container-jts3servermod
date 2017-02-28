@@ -1,7 +1,7 @@
 # docker-jts3servermod
 [![](https://images.microbadger.com/badges/image/galexrt/jts3servermod.svg)](https://microbadger.com/images/galexrt/jts3servermod "Get your own image badge on microbadger.com")
 
-[![Docker Repository on Quay.io](https://quay.io/repository/galexrt/jts3servermod/status "Docker Repository on Quay.io")](https://quay.io/repository/galexrt/zulip)
+[![Docker Repository on Quay.io](https://quay.io/repository/galexrt/jts3servermod/status "Docker Repository on Quay.io")](https://quay.io/repository/galexrt/jts3servermod)
 
 Image available from:
 * [**Quay.io**](https://quay.io/repository/galexrt/jts3servermod)
