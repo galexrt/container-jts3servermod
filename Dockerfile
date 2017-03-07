@@ -10,7 +10,7 @@ RUN groupadd -g "$JTS3_GROUP" -r jts3servermod && \
     useradd -u "$JTS3_USER" -r -g "$JTS3_GROUP" -d "$JTS3_DIR" jts3servermod && \
     apt-get -q update && \
     apt-get -q upgrade -y && \
-    apt-get -q install unzip sudo -y && \
+    apt-get -q install unzip -y && \
     wget -q -O /jts3servermod.zip "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
     cd / && \
     unzip jts3servermod.zip && \
