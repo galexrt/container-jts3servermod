@@ -19,4 +19,4 @@ echo "=> Corrected mount point permissions."
 
 cd "$JTS3_DIR" || exit 1
 echo "=> Starting JTS3ServerMod by Stefan1200 (https://www.stefan1200.de) ..."
-exec gosu "$JTS3_USER" java "$JTS3_JAVA_ARGS" -jar "$JTS3_DIR/JTS3ServerMod.jar"
+exec gosu "$JTS3_USER":"$JTS3_GROUP" java "$JTS3_JAVA_ARGS" -jar "$JTS3_DIR/JTS3ServerMod.jar"
