@@ -32,7 +32,7 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     apt-get -qq autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 VOLUME ["$JTS3_DIR/config"]
-ENTRYPOINT "/entrypoint.sh"
+ENTRYPOINT ["/entrypoint.sh"]
