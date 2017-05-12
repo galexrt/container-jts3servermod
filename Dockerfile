@@ -14,9 +14,9 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     apt-get -q upgrade -y && \
     apt-get -q install unzip -y && \
     wget -q -O /jts3servermod.zip "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
-    cd / && \
+    mkdir -p /jts3servermod && \
+    cd /jts3servermod && \
     unzip jts3servermod.zip && \
-    mv -f "/JTS3ServerMod" "$JTS3_DIR" && \
     chown -R jts3servermod:jts3servermod "$JTS3_DIR" && \
     rm -rf /jts3servermod.zip "/JTS3ServerMod" "$JTS3_DIR/tools" "$JTS3_DIR/readme*" "$JTS3_DIR/documents" "$JTS3_DIR/changelog.txt" && \
     cp -rf "$JTS3_DIR/config" "$JTS3_DIR/default_config" && \
