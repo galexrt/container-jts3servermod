@@ -7,10 +7,10 @@ fi
 
 echo "-> Updating user and group id if necessary ..."
 if [ "$JTS3_USER" != "3000" ]; then
-    usermod -u "#$JTS3_USER" jts3servermod
+    usermod -u "$JTS3_USER" jts3servermod
 fi
 if [ "$JTS3_GROUP" != "3000" ]; then
-    groupmod -g "#$JTS3_GROUP" jts3servermod
+    groupmod -g "$JTS3_GROUP" jts3servermod
 fi
 
 echo "-> Correcting mount point permissions ..."
