@@ -1,5 +1,7 @@
 FROM java:8-jre
 
+LABEL maintainer="Alexander Trost <galexrt@googlemail.com>"
+
 ENV JTS3_USER="3000" \
     JTS3_GROUP="3000" \
     JTS3_DIR="/jts3servermod" \
