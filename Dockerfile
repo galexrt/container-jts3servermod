@@ -27,6 +27,7 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     unzip "/tmp/jts3servermod.zip" && \
     rm -f "/tmp/jts3servermod.zip" && \
     mv "/tmp/JTS3ServerMod" "$JTS3_DIR" && \
+    touch "$JTS3_DIR/JTS3ServerMod_InstanceManager.log" && \
     chown -R jts3servermod:jts3servermod "$JTS3_DIR" && \
     rm -rf "$JTS3_DIR/tools" "$JTS3_DIR/readme*" "$JTS3_DIR/documents" "$JTS3_DIR/changelog.txt" && \
     cp -arf "$JTS3_DIR/config" "$JTS3_DIR/default_config" && \
