@@ -1,9 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "jts3servermod.fullname" . }}
+  annotations:
+    checksum/servercfg: {{ include (print $.Template.BasePath "/configmap-servercfg.yaml") . | sha256sum }}
+    checksum/botcfg: {{ include (print $.Template.BasePath "/configmap-botcfg.yaml") . | sha256sum }}
   labels:
     {{- include "jts3servermod.labels" . | nindent 4 }}
+  name: {{ include "jts3servermod.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
