@@ -31,12 +31,13 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     chown -R jts3servermod:jts3servermod "$JTS3_DIR" && \
     rm -rf "$JTS3_DIR/tools" "$JTS3_DIR/readme*" "$JTS3_DIR/documents" "$JTS3_DIR/changelog.txt" && \
     cp -arf "$JTS3_DIR/config" "$JTS3_DIR/default_config" && \
-    chmod 770 -R "$JTS3_DIR" && \
     apt-get -qq clean && \
     apt-get -qq autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 USER "$JTS3_USER"
+
+WORKDIR "$JTS3_DIR"
 
 VOLUME ["$JTS3_DIR/config"]
 
