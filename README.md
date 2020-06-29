@@ -81,3 +81,7 @@ docker run \
     -p 8087:8087 \
     quay.io/galexrt/jts3servermod:latest
 ```
+
+## Kubernetes
+
+A Helm Chart is available under the [`charts/`](charts/) directory.
