@@ -59,7 +59,6 @@ spec:
           emptyDir: {}
         - name: logincsv
         {{- if and .Values.persistence.enabled (eq .Values.persistence.type "pvc") }}
-        - name: storage
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (include "jts3servermod.fullname" .) }}
         {{- else }}
