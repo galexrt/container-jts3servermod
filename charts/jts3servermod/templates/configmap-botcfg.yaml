@@ -1,0 +1,15 @@
+{{- if .Values.jts3servermod.bots }}
+  {{- $dot := . }}
+  {{- range $botName, $bot := .Values.jts3servermod.bots -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "jts3servermod.fullname" $dot }}-botcfg-{{ $botName }}
+  labels:
+    {{- include "jts3servermod.labels" $dot | nindent 4 }}
+data:
+  {{- range $fName, $content := $bot }}
+  {{ $fName }}: |- {{ $content | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}

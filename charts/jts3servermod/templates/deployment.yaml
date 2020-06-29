@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jts3servermod.fullname" . }}
+  labels:
+    {{- include "jts3servermod.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "jts3servermod.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "jts3servermod.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "jts3servermod.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- $dot := . }}
+          volumeMounts:
+            - name: logs
+              mountPath: /jts3servermod/logs
+            - name: logincsv
+              mountPath: /jts3servermod/logincsv
+      {{- with .Values.jts3servermod.bots }}
+        {{- range $botName, $bot := $dot.Values.jts3servermod.bots }}
+            - name: botcfg-{{ $botName }}
+              mountPath: /jts3servermod/{{ $botName }}
+              readOnly: true
+        {{- end }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      volumes:
+        - name: logs
+          emptyDir: {}
+        - name: logincsv
+        {{- if and .Values.persistence.enabled (eq .Values.persistence.type "pvc") }}
+        - name: storage
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "jts3servermod.fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+    {{- with .Values.jts3servermod.bots }}
+      {{- range $botName, $bot := $dot.Values.jts3servermod.bots }}
+        - name: botcfg-{{ $botName }}
+          configMap:
+            name: {{ template "jts3servermod.botcfgname" (dict "dot" $dot "botName" $botName) }}
+      {{- end }}
+    {{- end }}
