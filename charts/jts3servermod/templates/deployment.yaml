@@ -36,12 +36,12 @@ spec:
             - name: logincsv
               mountPath: /jts3servermod/logincsv
             - name: servercfg
-              mountPath: /jts3servermod/JTS3ServerMod_InstanceManager.cfg
+              mountPath: /jts3servermod/config/JTS3ServerMod_InstanceManager.cfg
               subPath: JTS3ServerMod_InstanceManager.cfg
       {{- with .Values.jts3servermod.bots }}
         {{- range $botName, $bot := $dot.Values.jts3servermod.bots }}
             - name: botcfg-{{ $botName }}
-              mountPath: /jts3servermod/{{ $botName }}
+              mountPath: /jts3servermod/config/{{ $botName }}
               readOnly: true
         {{- end }}
       {{- end }}
