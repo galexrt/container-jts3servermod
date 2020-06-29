@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ printf "%s-servercfg" (include "jts3servermod.fullname" .) | trunc 63 }}
+  name: {{ include "jts3servermod.fullname" . }}
   labels:
     {{- include "jts3servermod.labels" . | nindent 4 }}
 data:

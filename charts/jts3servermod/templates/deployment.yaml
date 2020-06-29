@@ -35,6 +35,9 @@ spec:
               mountPath: /jts3servermod/logs
             - name: logincsv
               mountPath: /jts3servermod/logincsv
+            - name: servercfg
+              mountPath: /jts3servermod/JTS3ServerMod_InstanceManager.cfg
+              subPath: JTS3ServerMod_InstanceManager.cfg
       {{- with .Values.jts3servermod.bots }}
         {{- range $botName, $bot := $dot.Values.jts3servermod.bots }}
             - name: botcfg-{{ $botName }}
@@ -64,6 +67,12 @@ spec:
         {{- else }}
           emptyDir: {}
         {{- end }}
+        - name: servercfg
+          configMap:
+            name: {{ include "jts3servermod.fullname" . }}
+            items:
+              - key: JTS3ServerMod_InstanceManager.cfg
+                path: JTS3ServerMod_InstanceManager.cfg
     {{- with .Values.jts3servermod.bots }}
       {{- range $botName, $bot := $dot.Values.jts3servermod.bots }}
         - name: botcfg-{{ $botName }}
