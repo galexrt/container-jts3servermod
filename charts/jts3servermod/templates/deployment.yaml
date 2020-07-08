@@ -9,6 +9,8 @@ metadata:
   name: {{ include "jts3servermod.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       {{- include "jts3servermod.selectorLabels" . | nindent 6 }}
