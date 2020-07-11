@@ -53,6 +53,7 @@ tolerations: []
 affinity: {}
 
 jts3servermod:
+  #javaArgs: "-Xmx256M"
   instanceManagerCfg: |
     # JTS3ServerMod Instance Manager config file
     bot_fulladmin_list = YOUR_ADMIN_TS3_ID

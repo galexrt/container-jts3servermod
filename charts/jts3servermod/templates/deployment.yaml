@@ -31,6 +31,10 @@ spec:
           env:
             - name: JTS3_LOG
               value: /jts3servermod/logs/JTS3ServerMod_InstanceManager.cfg
+            {{- with .Values.jts3servermod.javaArgs }}
+            - name: JTS3_JAVA_ARGS
+              value: {{ . | quote }}
+            {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
