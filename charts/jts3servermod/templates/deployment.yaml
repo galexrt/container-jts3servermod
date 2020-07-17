@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    checksum/servercfg: {{ include (print $.Template.BasePath "/configmap-servercfg.yaml") . | sha256sum }}
-    checksum/botcfg: {{ include (print $.Template.BasePath "/configmap-botcfg.yaml") . | sha256sum }}
   labels:
     {{- include "jts3servermod.labels" . | nindent 4 }}
   name: {{ include "jts3servermod.fullname" . }}
@@ -16,6 +13,9 @@ spec:
       {{- include "jts3servermod.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/servercfg: {{ tpl (print $.Template.BasePath "/configmap-servercfg.yaml") . | sha256sum }}
+        checksum/botcfg: {{ tpl (print $.Template.BasePath "/configmap-botcfg.yaml") . | sha256sum }}
       labels:
         {{- include "jts3servermod.selectorLabels" . | nindent 8 }}
     spec:
