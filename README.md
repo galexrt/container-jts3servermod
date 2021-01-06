@@ -65,7 +65,6 @@ docker run \
     --name jts3servermod \
     -d \
     -v /opt/docker/jts3servermod:/jts3servermod/config \
-    -p 8087:8087 \
     quay.io/galexrt/jts3servermod:latest
 ```
 
@@ -78,7 +77,6 @@ docker run \
     --name jts3servermod \
     -d \
     -v /opt/docker/jts3servermod/config:/jts3servermod/config:z \
-    -p 8087:8087 \
     quay.io/galexrt/jts3servermod:latest
 ```
 
