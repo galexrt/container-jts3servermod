@@ -8,22 +8,24 @@ ARG JTS3_GROUP="3000"
 ENV TINI_VERSION="v0.19.0" \
     JTS3_DIR="/jts3servermod" \
     JTS3_JAVA_ARGS="-Xmx256M" \
+    TINI_ARCH="amd64" \
     ARCH=""
 
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc /tini.asc
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TINI_ARCH} /tini-${TINI_ARCH}
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TINI_ARCH}.sha256sum /tini-${TINI_ARCH}.sha256sum
 
 RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     groupadd -g "$JTS3_GROUP" -r jts3servermod && \
     useradd -u "$JTS3_USER" -r -g "$JTS3_GROUP" -d "$JTS3_DIR" jts3servermod && \
     apt-get -q update && \
     apt-get -q upgrade -y && \
-    gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 && \
-    gpg --batch --verify /tini.asc /tini && \
+    cd / && \
+    echo "$(cat /tini-${TINI_ARCH}.sha256sum)" | sha256sum -c && \
+    mv /tini-${TINI_ARCH} /tini && \
     chmod 755 /tini && \
     apt-get -q install unzip -y && \
-    wget -q -O "/tmp/jts3servermod.zip" "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
     cd /tmp && \
+    wget -q -O "/tmp/jts3servermod.zip" "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
     unzip "/tmp/jts3servermod.zip" && \
     rm -f "/tmp/jts3servermod.zip" && \
     mv "/tmp/JTS3ServerMod" "$JTS3_DIR" && \
