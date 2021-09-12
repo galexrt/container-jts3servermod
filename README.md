@@ -5,7 +5,7 @@
 Container Image available from:
 
 * [Quay.io](https://quay.io/repository/galexrt/jts3servermod)
-* [GHCR.io](https://github.com/users/galexrt/packages/container/package/vlc)
+* [GHCR.io](https://github.com/users/galexrt/packages/container/package/jts3servermod)
 
 Container Image Tags:
 
