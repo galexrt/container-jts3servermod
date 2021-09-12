@@ -1,4 +1,4 @@
-# docker-jts3servermod
+# container-jts3servermod
 
 [JTS3ServerMod](https://jts3servermod.de/) by Stefan1200 as a Container Image.
 
