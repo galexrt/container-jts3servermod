@@ -5,7 +5,7 @@ LABEL maintainer="Alexander Trost <galexrt@googlemail.com>"
 ARG JTS3_USER="3000"
 ARG JTS3_GROUP="3000"
 
-ENV TINI_VERSION="v0.18.0" \
+ENV TINI_VERSION="v0.19.0" \
     JTS3_DIR="/jts3servermod" \
     JTS3_JAVA_ARGS="-Xmx256M" \
     ARCH=""
@@ -44,4 +44,5 @@ VOLUME ["$JTS3_DIR/config"]
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/tini", "--"]
+
 CMD ["/entrypoint.sh"]

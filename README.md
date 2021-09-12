@@ -1,23 +1,20 @@
 # docker-jts3servermod
 
-[![](https://images.microbadger.com/badges/image/galexrt/jts3servermod.svg)](https://microbadger.com/images/galexrt/jts3servermod "Get your own image badge on microbadger.com")
+[JTS3ServerMod](https://jts3servermod.de/) by Stefan1200 as a Container Image.
 
-[![Docker Repository on Quay.io](https://quay.io/repository/galexrt/jts3servermod/status "Docker Repository on Quay.io")](https://quay.io/repository/galexrt/jts3servermod)
+Container Image available from:
 
-Image available from:
+* [Quay.io](https://quay.io/repository/galexrt/jts3servermod)
+* [GHCR.io](https://github.com/users/galexrt/packages/container/package/vlc)
 
-* [**Quay.io**](https://quay.io/repository/galexrt/jts3servermod)
-* [**Docker Hub**](https://hub.docker.com/r/galexrt/jts3servermod)
+Container Image Tags:
 
-JTS3ServerMod by Stefan1200 (see [here](https://www.stefan1200.de/forum/index.php?topic=2.0))
-
-## Summary
-
-* Image based on java:8-jre with the latest version of JTS3ServerMod
-* You can inject your config into the container by using the directory (on first start the default configs will be copied to the directory):
-  * `/jts3servermod/config`
+* `main` - Latest build of the `main` branch.
+* `YYYYmmdd-HHMMSS-NNN` - Latest build of the application with date of the build.
 
 ## Usage
+
+You can inject your config into the container by using the directory (on first start the default configs will be copied to the directory): `/jts3servermod/config`.
 
 ### Updating the image
 
@@ -29,10 +26,10 @@ Quay.io Docker Image:
 docker pull quay.io/galexrt/jts3servermod:latest
 ```
 
-Or for the Docker Hub image:
+Or for the GHCR.io image:
 
 ```shell
-docker pull galexrt/jts3servermod:latest
+docker pull ghcr.io/galexrt/jts3servermod:latest
 ```
 ### Permissions
 
@@ -80,6 +77,6 @@ docker run \
     quay.io/galexrt/jts3servermod:latest
 ```
 
-## Kubernetes
+## Kubernetes + Helm
 
 A Helm Chart is available under the [`charts/`](charts/) directory.
