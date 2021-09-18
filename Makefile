@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash -euo pipefail -c
 .EXPORT_ALL_VARIABLES:
 
-RELEASE_TAG := $(shell date +%Y%m%d-%H%M%S-%3N)
+RELEASE_TAG := v$(shell date +%Y%m%d-%H%M%S-%3N)
 
 # Default is the main branch as that is where the "latest" tag should be
 VERSION ?= main
