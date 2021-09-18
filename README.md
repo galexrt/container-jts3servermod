@@ -10,7 +10,7 @@ Container Image available from:
 Container Image Tags:
 
 * `main` - Latest build of the `main` branch.
-* `YYYYmmdd-HHMMSS-NNN` - Latest build of the application with date of the build.
+* `vYYYYmmdd-HHMMSS-NNN` - Latest build of the application with date of the build.
 
 ## Usage
 
