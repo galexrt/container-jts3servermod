@@ -40,7 +40,8 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     mv "/tini-${TINI_ARCH}" /tini && \
     chmod 755 /tini && \
     apt-get -q install unzip -y && \
-    cd /tmp && \
+    mkdir -p /tmp/JTS3ServerMod && \
+    cd /tmp/JTS3ServerMod && \
     wget -q -O "/tmp/jts3servermod.zip" "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
     unzip "/tmp/jts3servermod.zip" && \
     rm -f "/tmp/jts3servermod.zip" && \
