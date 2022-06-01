@@ -11,5 +11,6 @@ data:
   {{- range $fName, $content := $bot }}
   {{ $fName }}: |- {{ $content | nindent 4 }}
   {{- end }}
+---
   {{- end }}
 {{- end }}
