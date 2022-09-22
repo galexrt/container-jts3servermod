@@ -42,7 +42,7 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     apt-get -q install unzip -y && \
     mkdir -p /tmp/JTS3ServerMod && \
     cd /tmp/JTS3ServerMod && \
-    wget -q -O "/tmp/jts3servermod.zip" "http://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
+    wget -q -O "/tmp/jts3servermod.zip" "https://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
     unzip "/tmp/jts3servermod.zip" && \
     rm -f "/tmp/jts3servermod.zip" && \
     mv "/tmp/JTS3ServerMod" "${JTS3_DIR}" && \
