@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-buster
+FROM openjdk:11.0.16-jre-buster
 
 ARG BUILD_DATE="N/A"
 ARG REVISION="N/A"
