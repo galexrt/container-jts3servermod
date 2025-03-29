@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: galexrt/jts3servermod
-  tag: v20200625-123022-203
+  tag: v20250327-124702-313
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []

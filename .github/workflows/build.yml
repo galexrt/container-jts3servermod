@@ -1,27 +1,32 @@
 name: build
+
 on:
   push:
     branches:
       - "main"
     tags:
       - 'v*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3.4.0
         with:
           registry: ghcr.io
           username: galexrt
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Login to Quay.io Container Registry
         uses: docker/login-action@v3.4.0
         with:
           registry: quay.io
           username: ${{ secrets.REGISTRY_QUAYIO_USERNAME }}
           password: ${{ secrets.REGISTRY_QUAYIO_PASSWORD }}
+
       - name: Build Container Image
         run: |
           if [[ "${GITHUB_REF}" =~ ^refs/tags/* ]]; then
@@ -33,3 +38,30 @@ jobs:
           fi
           
           make container-build container-push VERSION="${VERSION:-main}"
+
+  helm-release:
+    # Depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions
+    # see: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.8.1
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.7.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
