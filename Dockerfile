@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-buster
+FROM docker.io/library/eclipse-temurin:21-jre-jammy
 
 ARG BUILD_DATE="N/A"
 ARG REVISION="N/A"
