@@ -1,4 +1,4 @@
-FROM docker.io/library/eclipse-temurin:22-jre-jammy
+FROM docker.io/library/eclipse-temurin:25-jre-jammy
 
 ARG BUILD_DATE="N/A"
 ARG REVISION="N/A"
