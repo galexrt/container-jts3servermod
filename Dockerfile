@@ -39,7 +39,7 @@ RUN [ ! -z "$ARCH" ] || ARCH="$(dpkg --print-architecture)" && \
     echo "$(cat /tini-${TINI_ARCH}.sha256sum)" | sha256sum -c && \
     mv "/tini-${TINI_ARCH}" /tini && \
     chmod 755 /tini && \
-    apt-get -q install unzip -y && \
+    apt-get -q install unzip wget ca-certificates -y && \
     mkdir -p /tmp/JTS3ServerMod && \
     cd /tmp/JTS3ServerMod && \
     wget -q -O "/tmp/jts3servermod.zip" "https://www.stefan1200.de/dlrequest.php?file=jts3servermod&type=.zip" && \
