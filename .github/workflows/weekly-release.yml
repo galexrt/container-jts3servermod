@@ -7,7 +7,7 @@ on:
   # Allow running rebuilds manually
   workflow_dispatch:
 jobs:
-  test:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
